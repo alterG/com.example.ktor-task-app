@@ -17,10 +17,11 @@ class ApplicationTest {
         }
 
         val response = client.get("/tasks/byPriority/Medium")
+        val responseBody = response.bodyAsText()
 
         assertEquals(HttpStatusCode.OK, response.status)
-        assertContains("Plan upcoming month", response.bodyAsText())
-        assertContains("Learn movement exercise", response.bodyAsText())
+        assertContains(responseBody, "Plan upcoming month")
+        assertContains(responseBody, "Learn movement exercise")
     }
 
     @Test
